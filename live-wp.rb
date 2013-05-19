@@ -20,11 +20,11 @@ get '/api/changes' do
   content_type :json
 
   # params :from (30 sec ago)
-  rcstart   = Time.now.utc.strftime("%Y%m%d%H%M%S")
+  rcend   = Time.now.utc.strftime("%Y%m%d%H%M%S")
   # params :to
-  rcend     = Time.at(Time.now.to_i - 30).utc.strftime("%Y%m%d%H%M%S")
+  rcstart     = Time.at(Time.now.to_i - 30).utc.strftime("%Y%m%d%H%M%S")
 
-  api_url = "#{WP_API_ENDPOINT}action=query&list=recentchanges&rcnamespace=0&rcprop=id|user|comment|timestamp|title&rcshow=!bot|anon&rcend=#{rcend}&rcstart=#{rcstart}&format=json"
+  api_url = "#{WP_API_ENDPOINT}action=query&list=recentchanges&rcnamespace=0&rclimit=15&rcdir=newer&rcprop=id|user|comment|timestamp|title&rcshow=!bot|anon&rcend=#{rcend}&rcstart=#{rcstart}&format=json"
   puts api_url
   resp = Net::HTTP.get_response(URI.parse(api_url))
   data = resp.body

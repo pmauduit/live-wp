@@ -26,12 +26,18 @@
         background-color: #fff;
         width: 100%;
         height: 250px;
-        padding: 5px 20px 10px 20px;
+        padding: 5px 0px 10px 0px;
+        overflow-y: scroll;
         filter:alpha(opacity=70);-moz-opacity:0.7;opacity: 0.7;
         font-family: 'Open Sans',arial,helvetica,sans-serif;
+        font-size: 12px;
       }
       #changesets-desc h1 {
         font-size: 20px;
+        margin-left: 10px;
+      }
+      #changesets-desc a {
+        margin-left: 20px;
       }
     </style>
   </head>
@@ -43,7 +49,8 @@
 
     <div id="changesets-desc">
       <h1>Modifications en cours</h1>
-      <a id="manual-upd" href="#">Blah</a>
+      <ul id="changesets-listing">
+      </ul>
     </div>
   </body>
 </html>
