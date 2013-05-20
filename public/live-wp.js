@@ -56,14 +56,18 @@ update_changesets = function() {
   });
 }
 
-
+about_close = function() {
+  $('#about').toggle();
+}
 // on ready
 $(function() {
   // setting up leaflet / map
   map = L.map('map').setView([46.6, 0.], 7);
   L.tileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '<a href="#" id="a-about">A propos de ce site</a> - &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+  $('#a-about').click(function() { $('#about').toggle(); });
 
   // First call
   update_changesets();

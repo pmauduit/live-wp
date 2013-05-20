@@ -13,6 +13,8 @@
       body {
         margin: 0;
         overflow: hidden;
+        font-family: 'Open Sans',arial,helvetica,sans-serif;
+        font-size: 12px;
       }
       #map {
         width: 100%;
@@ -29,15 +31,37 @@
         padding: 5px 0px 10px 0px;
         overflow-y: scroll;
         filter:alpha(opacity=70);-moz-opacity:0.7;opacity: 0.7;
-        font-family: 'Open Sans',arial,helvetica,sans-serif;
-        font-size: 12px;
       }
       #changesets-desc h1 {
         font-size: 20px;
         margin-left: 10px;
+        color: #888;
       }
       #changesets-desc a {
         margin-left: 20px;
+      }
+      #about {
+        top: 20px;
+        position: absolute;
+        width: 700px;
+        height: 300px;
+        overflow-y: scroll;
+        background-color: white;
+        left: 250px;
+        padding: 20px;
+        border: 1px #444 solid;
+        display: none;
+      }
+      #about p {
+        color: #777;
+      }
+      #about a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      span#about-close {
+        float: right;
       }
     </style>
   </head>
@@ -48,9 +72,49 @@
     <div id="map"></div>
 
     <div id="changesets-desc">
-      <h1>Modifications en cours</h1>
+      <h1>Modifications en cours ...</h1>
       <ul id="changesets-listing">
       </ul>
+    </div>
+    <div id="about">
+      <span id="about-close"><a href="javascript:about_close();">Fermer</a></span>
+      <h1>live-wp</h1>
+      
+      <p>Ce site présente les modifications en temps réel effectuées par les
+      personnes non connectées sur la déclinaison française de l'encyclopédie
+      libre <a href="http://fr.wikipedia.org/">Wikipedia</a>.</p>
+
+      <p>Techniquement, l'application interroge toutes les 30 secondes les
+      serveurs de Wikipedia afin de récupérer les derniers changements
+      effectués par les IPs non connectées (les contributions effectuées par
+      les utilisateurs connectés ne fournissent pas d'information concernant la
+      géolocalisation). Une fois les IPs collectées, la base de données fournie
+      par <a href="http://www.maxmind.com">Maxmind</a> permet d'enrichir les
+      informations et d'associer plus ou moins grossièrement l'IP à une ville,
+      ainsi que des coordonnées géographiques.</p>
+
+      <p>Une fois ces informations retournées au navigateur, les bibliothèques
+      Javascript <a href="http://www.jquery.com">JQuery</a> et <a
+        href="http://www.leaflet.com">LeafLet</a>, permettent de mettre à jour
+      la carte en fonction des éditions.</p>
+
+      <p>Le code source de cette application est disponible sur <a
+        href="http://www.github.com/pmauduit/live-wp">GitHub</a>.</p>
+      
+      <h1>Pourquoi ?</h1>
+
+      <p>Lors d'une Wikiperm à Grenoble, les animateurs cherchaient un moyen de
+      présenter interactivement les modifications en direct. L'outil LiveRC a
+      alors été utilisé, mais celui-ci ne se prête pas très bien à la
+      démonstration, étant plutot un outil métier pour surveiller les
+      potentiels vandalismes.</p>
+
+      <p>Des outils similaires existaient auparavant, notamment <a
+        href="http://rcmap.hatnote.com/#fr">rcmap</a>, mais celui-ci se veut
+      plus proche de <a
+        href="http://live.openstreetmap.fr">live.openstreetmap.fr</a>
+      (spécifique au projet OpenStreetMap).</p>
+
     </div>
   </body>
 </html>
